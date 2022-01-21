@@ -1,0 +1,82 @@
+3.1
+queue = ["1", "2", "3", "4", "5", "6"]
+x = 0
+while True:
+    print("Текущая очередь:\n", queue)
+    a = input("""Выберите действие:
+1. Указать x (по умолчанию 0)
+2. Поместить элемент х в конец очереди
+3. Удаляет элемент из начала очереди queue и присваивает его значение переменной x
+4. Вернуть значение FALSE если очередь является пустой, в ином случае вывесть TRUE
+5. Определение текущего числа элементов в очереди
+6. Очистка очереди\n""")
+    if a == "1":
+        x = input("Введите x ")
+    elif a == "2":
+        queue.append(x)
+    elif a == "3":
+        x = queue[0]
+        queue.pop(0)
+    elif a == "4":
+        print("TRUE") if len(queue) > 0 else print("FALSE")
+    elif a == "5":
+        print(len(queue))
+    elif a == "6":
+        queue.clear()
+    else:
+        print("Действие указанно неправильно")
+
+3.2
+from random import randint
+count = 1
+a=0
+s = []
+s1 = []
+while True:
+    if count != 0:
+        a = input("""Выберите действие:
+1. Перебор элементов списка
+2. Операция формирования списка
+3. Вставка элемента в список
+4. Удаление элемента
+5. Перестановка элементов списка
+6. Печать односвязного списка\n""")
+    if str(a) == "1":
+       count = 0
+    elif str(a) == "2":
+        n = int(input("Введите размер списка"))
+        for i in range(n):
+            s.append(randint(1, 100))
+    elif str(a) == "3":
+        y = input("Элемент который надо вставить: ")
+        pos = int(input("Укажите индекс"))
+        for i in range (len(s)):
+            if i == pos:
+                s1.append(y)
+            if i > pos:
+                j = i
+                s1.append(s[j])
+            else:
+                s1.append(s[i])
+        s = s1
+    elif str(a) == "4":
+        l = int(len(s))
+        while True:
+            d = int(input("Элемент который надо удалить: "))
+            if d <= l-1:
+                break
+            else:
+                print("ОШИБКА!!!")
+        s.pop(d)
+    elif str(a) == "5":
+        first = int(input("Укажите порядковый номер первого элемента"))
+        second = int(input("Укажите порядковый номер первого элемента"))
+        s[first], s[second] = s[second], s[first]
+    elif str(a) == "6":
+        a=0
+        count = 1
+    else:
+        print("Действие указанно неправильно")
+        print(a)
+    a = int(a) + 1
+    print("Текущий список:", s)
